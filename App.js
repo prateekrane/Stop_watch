@@ -1,11 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-
+import Home from './src/components/Home';
+import Splash from './Splash';
+import { useState } from 'react';
 export default function App() {
+  const [isLoading, setIsLoading] = useState(false);
+  setTimeout(() => {
+    setIsLoading(true);
+  }, 2500)
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={styles.container} >
+      {isLoading ? <Home /> : <Splash />}
     </View>
   );
 }
@@ -13,8 +18,5 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  }
 });
